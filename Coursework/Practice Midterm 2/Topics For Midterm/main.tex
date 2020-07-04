@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{cleveref}
+\crefname{section}{§}{§§}
+\Crefname{section}{§}{§§}
+% document size parameters
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{8.4in}
+\setlength{\textwidth}{6.5in}
+\setlength{\voffset}{-0.40in}
+\setlength{\headsep}{26pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% header information
+\pagestyle{fancyplain}
+\lhead{\large{{\bf Numerical Analysis} }}
+\rhead{\large{{\bf Midterm II}}}
+\title{Topics For Midterm}
+\author{Ramiro Gonzalez }
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item[Section 3.1:] You should be able to: 
+    \begin{itemize}
+        \item Construct Lagrange polynomial interpolants using $Eq. 3.1$ in the book. \\
+        Example problems § 3.1 $\#1, 2, 5, 6$
+        $$P(x) = f(x_0)L_{n,0}(x) + \cdot \cdot \cdot + f(x_{n})L_{n,n}(x) = \sum_{k = 0}^{n}f(x_k)L_{n,k}(x) = \Pi_{i = 0,i \neq k}^{n}\frac{(x - x_i)}{(x_{k} - x_{i})}(Eq 3.1)$$
+        \begin{enumerate}
+            \item[1] For the given functions $f(x)$, let $x_0 = 0$, $x_1 = .6$, and $x_2 = .9$. Construct interpolation polynomials of degree at most one and at most two to approximate $f(.45)$ and find the absolute error. 
+            \begin{enumerate}
+                \item $f(x) = \cos(x)$.\\
+                \begin{enumerate}
+                    \item[Degree 1]
+                    We want to construct an interpolation polynomial of degree one, that is $n = 1$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 2 nodal points that is $x_0, x_1$. Not including $x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1) $$
+                $$L_{1,0} = \frac{(x - x_{1})}{(x_0 - x_{1})},
+                L_{1,1} = \frac{(x - x_{0})}{(x_1 - x_{0})},$$
+                $$P_1(x) = y_{0}(L_{1,0}) + y_{1}(L_{1,1})$$
+                    \item[Degree 2]
+                    We want to construct an interpolation polynomial of degree two, that is $n = 2$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 3 nodal points that is $x_0, x_1,x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1),y_{2} = f(x_2) $$
+                $$L_{2,0} = \frac{(x - x_{1})(x - x_{2})}{(x_0 - x_{1})(x_{0} - x_{2})},
+                L_{2,1} = \frac{(x - x_{0})(x - x_{2})}{(x_1 - x_{0})(x_1 - x_{2})},
+                L_{2,2} = \frac{(x - x_{0})(x - x_{1})}{(x_{2} - x_{0})(x_{2} - x_{1})}$$
+                $$P_2(x) = y_{0}(L_{2,0}) + y_{1}(L_{2,1}) + y_{2}(L_{2,2})$$
+                  \item[ Absolute Error] We want to find the absolute error given $f(.45)$, we have previously found $P_1 \text{ and } P_2$. First we evalute the value of $x = .45$ at out interpolant polynomials. 
+                  $$P_{1}(.45) , P_{2}(.45)$$
+                  Absolute is as follows
+                  $$AbsErr1 = |P_{1}(.45) - f(.45)|$$
+                  $$AbsErr2 = |P_{2}(.45) - f(.45)|$$
+                \end{enumerate}
+                \item $f(x) = \sqrt{1 + x}$
+                 \begin{enumerate}
+                    \item[Degree 1]
+                    We want to construct an interpolation polynomial of degree one, that is $n = 1$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 2 nodal points that is $x_0, x_1$. Not including $x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1) $$
+                $$L_{1,0} = \frac{(x - x_{1})}{(x_0 - x_{1})},
+                L_{1,1} = \frac{(x - x_{0})}{(x_1 - x_{0})},$$
+                $$P_1(x) = y_{0}(L_{1,0}) + y_{1}(L_{1,1})$$
+                    \item[Degree 2]
+                    We want to construct an interpolation polynomial of degree two, that is $n = 2$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 3 nodal points that is $x_0, x_1,x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1),y_{2} = f(x_2) $$
+                $$L_{2,0} = \frac{(x - x_{1})(x - x_{2})}{(x_0 - x_{1})(x_{0} - x_{2})},
+                L_{2,1} = \frac{(x - x_{0})(x - x_{2})}{(x_1 - x_{0})(x_1 - x_{2})},
+                L_{2,2} = \frac{(x - x_{0})(x - x_{1})}{(x_{2} - x_{0})(x_{2} - x_{1})}$$
+                $$P_2(x) = y_{0}(L_{2,0}) + y_{1}(L_{2,1}) + y_{2}(L_{2,2})$$
+                  \item[ Absolute Error] We want to find the absolute error given $f(.45)$, we have previously found $P_1 \text{ and } P_2$. First we evalute the value of $x = .45$ at out interpolant polynomials. 
+                  $$P_{1}(.45) , P_{2}(.45)$$
+                  Absolute is as follows
+                  $$AbsErr1 = |P_{1}(.45) - f(.45)|$$
+                  $$AbsErr2 = |P_{2}(.45) - f(.45)|$$
+                \end{enumerate}
+                \item $f(x) = \ln(x + 1)$
+                 \begin{enumerate}
+                    \item[Degree 1]
+                    We want to construct an interpolation polynomial of degree one, that is $n = 1$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 2 nodal points that is $x_0, x_1$. Not including $x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1) $$
+                $$L_{1,0} = \frac{(x - x_{1})}{(x_0 - x_{1})},
+                L_{1,1} = \frac{(x - x_{0})}{(x_1 - x_{0})},$$
+                $$P_1(x) = y_{0}(L_{1,0}) + y_{1}(L_{1,1})$$
+                    \item[Degree 2]
+                    We want to construct an interpolation polynomial of degree two, that is $n = 2$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 3 nodal points that is $x_0, x_1,x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1),y_{2} = f(x_2) $$
+                $$L_{2,0} = \frac{(x - x_{1})(x - x_{2})}{(x_0 - x_{1})(x_{0} - x_{2})},
+                L_{2,1} = \frac{(x - x_{0})(x - x_{2})}{(x_1 - x_{0})(x_1 - x_{2})},
+                L_{2,2} = \frac{(x - x_{0})(x - x_{1})}{(x_{2} - x_{0})(x_{2} - x_{1})}$$
+                $$P_2(x) = y_{0}(L_{2,0}) + y_{1}(L_{2,1}) + y_{2}(L_{2,2})$$
+                  \item[ Absolute Error] We want to find the absolute error given $f(.45)$, we have previously found $P_1 \text{ and } P_2$. First we evalute the value of $x = .45$ at out interpolant polynomials. 
+                  $$P_{1}(.45) , P_{2}(.45)$$
+                  Absolute is as follows
+                  $$AbsErr1 = |P_{1}(.45) - f(.45)|$$
+                  $$AbsErr2 = |P_{2}(.45) - f(.45)|$$
+                \end{enumerate}
+                \item $f(x) = \tan(x)$
+                 \begin{enumerate}
+                    \item[Degree 1]
+                    We want to construct an interpolation polynomial of degree one, that is $n = 1$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 2 nodal points that is $x_0, x_1$. Not including $x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1) $$
+                $$L_{1,0} = \frac{(x - x_{1})}{(x_0 - x_{1})},
+                L_{1,1} = \frac{(x - x_{0})}{(x_1 - x_{0})},$$
+                $$P_1(x) = y_{0}(L_{1,0}) + y_{1}(L_{1,1})$$
+                    \item[Degree 2]
+                    We want to construct an interpolation polynomial of degree two, that is $n = 2$, therefore we need $n + 1$ points.\\
+                Consider the following. For second degree, we need 3 nodal points that is $x_0, x_1,x_2$
+                $$y_{0} = f(x_0),y_{1} = f(x_1),y_{2} = f(x_2) $$
+                $$L_{2,0} = \frac{(x - x_{1})(x - x_{2})}{(x_0 - x_{1})(x_{0} - x_{2})},
+                L_{2,1} = \frac{(x - x_{0})(x - x_{2})}{(x_1 - x_{0})(x_1 - x_{2})},
+                L_{2,2} = \frac{(x - x_{0})(x - x_{1})}{(x_{2} - x_{0})(x_{2} - x_{1})}$$
+                $$P_2(x) = y_{0}(L_{2,0}) + y_{1}(L_{2,1}) + y_{2}(L_{2,2})$$
+                  \item[ Absolute Error] We want to find the absolute error given $f(.45)$, we have previously found $P_1 \text{ and } P_2$. First we evalute the value of $x = .45$ at out interpolant polynomials. 
+                  $$P_{1}(.45) , P_{2}(.45)$$
+                  Absolute is as follows
+                  $$AbsErr1 = |P_{1}(.45) - f(.45)|$$
+                  $$AbsErr2 = |P_{2}(.45) - f(.45)|$$
+                \end{enumerate}
+                
+            \end{enumerate}
+        \end{enumerate}
+        
+    \end{itemize}
+\end{enumerate}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+

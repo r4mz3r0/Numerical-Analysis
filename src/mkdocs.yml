@@ -1,0 +1,6 @@
+site_name: Numerical Analysis
+
+nav:
+    - Examinations: index.md
+    - Misc: misc.md
+    - About: about.md

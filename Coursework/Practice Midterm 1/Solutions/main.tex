@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{listings}
+
+% document size parameters
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{8.4in}
+\setlength{\textwidth}{6.5in}
+\setlength{\voffset}{-0.40in}
+\setlength{\headsep}{26pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% header information
+\pagestyle{fancyplain}
+\lhead{\large{{\bf  Numerical Analysis} }}
+\rhead{\large{{\bf Solutions}}}
+\title{Practice Midterm 1}
+\author{Ramiro Gonzalez }
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+
+% PROBLEM 1
+\item Let $f(x) = -3x^3 + 4x - 2$
+\begin{enumerate}
+    \item Use Newton’s method to find $x_1$ if $x_0 = 1$.\\
+    Consider that $$x_n = x_{n - 1} - \frac{fx_{n-1}}{f'(x_{n-1})}$$
+    to find $x_1$
+    $$x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}$$
+    We know that $f(1) = -1$, $f'(x) = -9x^2 + 4$, $f'(1) = -5$ therefore
+    $$x_1 = 1 + \frac{-1}{5} = \frac{4}{5} = .8$$
+    \item Use the Secant method to find $x_2$ if $x_0= 2$ and $x_1= 1$.\\
+    Consider that $$x_n = x_{n-1} - \frac{f(x_{n-1})(x_{n-1} - x_{n - 2})}{f(x_{n-1}) - f(x_{n-2})}$$
+    $$x_{2} = x_{1} - \frac{f(x_{1})(x_{1} - x_{0})}{f(x_{1}) - f(x_0)}$$
+    given that $x_0 = 2, x_1 = 1$, $f(1) = -1, f(2) = -18 $
+    $$x_{2} = 1 - \frac{(-1)(1 - 2)}{-1 + 18} = \frac{16}{17} \approx{0.9412}$$
+\end{enumerate}
+
+% PROBLEM 2
+\item Let $g(x) = \sqrt{x + 6}$
+\begin{enumerate}
+    \item Show that $c = 3$ is a fixed point of the function $g(x)$\\
+    We know that $g(c) = 3$
+    $$g(c) = c = \sqrt{c + 6}$$
+    $$c^2 - c - 6 = 0$$
+    $$(c - 3)(c +2) = 0$$
+    The graph $g(x)$ has a fixed point at $c = -2$ and $c = 3$\\
+    \\
+    Optionally, you may show $g(c) = c$ to be true: $$ g(c) = c$$ $$g(3) = \sqrt{3+6} = \sqrt{9} = 3 $$
+    \item Find a bound for $|g'(x)|$ for $x \in [0,4]$\\
+    We know that there $c = 3$ is a fixed point, $c \in [0,4]$
+    $$g'(x) = \frac{1}{2(\sqrt{x+6})}$$
+    $$|g'(x)| = \frac{1}{2}\abs{\frac{1}{\sqrt{x + 6}}}$$
+    $$g'(0) = \frac{1}{2\sqrt{6}}, g'(4) = \frac{1}{2\sqrt{10}}$$
+    $$\frac{1}{2\sqrt{10}} \leq g'(x) \leq \frac{1}{2\sqrt{6}}$$
+
+    \item Is the fixed-point method converging to the fixed point $c = 3$ in the interval $[0,4]$? If so, what is the rate of convergence?\\
+    since $|g'(c)| = \frac{1}{6} < 1$ we know it converges. Since  $|g'(c)| \neq 0$ the rate of convergence is linear. \\
+    \color{red} The following shows it :  \color{black}
+    Using Taylors Theorem
+    $$g(x) = \sqrt{x + 6}, g'(x) = \frac{1}{2\sqrt{x + 6}}, g''(x) = \frac{-1}{4(x + 6)^{\frac{3}{2}}}$$
+    $$g(x) = \sqrt{c + 6} + \frac{1}{2\sqrt{c + 6}}(x - c) + (\frac{-1}{4(\xi + 6)^{\frac{3}{2}}})(x - c)^2$$
+    We know that $\xi : [x, c]$ , $x_{n +1} = g(x_n)$, we know that 
+    $g(c) = c, \sqrt{c + 6} = c$
+    $$x_{n + 1} = c + \frac{1}{2\sqrt{c + 6}}(x_{n} - c) + (\frac{-1}{4(\xi + 6)^{\frac{3}{2}}})(x_{n} - c)^2 $$
+    $$x_{n + 1} - c = \frac{1}{2\sqrt{c + 6}}(x_{n} - c) + (\frac{-1}{4(\xi + 6)^{\frac{3}{2}}})(x_{n} - c)^2 $$
+    $$\frac{{x_{n + 1} - c}}{x_{n} - c} =  \frac{1}{2\sqrt{c + 6}} + (\frac{-1}{4(\xi + 6)^{\frac{3}{2}}})(x_{n} - c) $$
+    $$\lim_{n \to \infty}\abs{\frac{{x_{n + 1} - c}}{x_{n} - c}} =  \frac{1}{2\sqrt{c + 6}} + (\frac{-1}{4(\xi + 6)^{\frac{3}{2}}})(x_{n} - c) $$
+    $$\text{consider that} \lim_{n \to \infty}(\frac{-1}{4(\xi + 6)^{\frac{3}{2}}})(x_{n} - c) = 0, (\lim_{n \to \infty} (x_n) = c)$$
+    $$\lim_{n \to \infty}\abs{\frac{{x_{n + 1} - c}}{x_{n} - c}} =  \frac{1}{2\sqrt{c + 6}} $$
+    $$\lim_{n \to \infty}\abs{\frac{{x_{n + 1} - c}}{x_{n} - c}} =  \frac{1}{2c}, c = 3 $$
+    $$\lim_{n \to \infty}\frac{|{x_{n + 1} - c}|}{|x_{n} - c|^{\alpha}} =  \frac{1}{2c} = \frac{1}{6} = \lambda $$
+    This shows that the rate of convergence $\alpha$ is $\alpha = 1$
+\end{enumerate}
+
+% PROBLEM 3
+    \item 
+    \begin{enumerate}
+        \item Give Taylor's theorem for a function f at a point $x_0$.\\
+        The following is necessary in order to apply Taylor's theorem.\\
+        \textit{$f \in C^k[a,b], f^{k +1}$ exist on given interval and $x_0 \in [a,b]$ there exists a number $\xi(x)$ between $x_0$ and $x$.}\\
+        $$f(x) = \sum_{k = 0}^{\infty} \frac{f^{(k)}(x_0)(x - x_0)^k}{k!} + \frac{f^{(k+1)}(\xi(x))}{(k+1)!}(x - x_0)^{k+1}$$
+        \item Using Newton's method, what is the rate of convergence for the sequence error?\\
+        \\
+        The rate of convergence for Newton's method is Quadratic.\\=
+        %
+        \item Give the largest interval possible approximation of a number p up to $10^{-5}$ relative error.\\
+        We know that relative error $\frac{|p-p*|}{p}$
+        $$\frac{|p-p*|}{p} < 10^{-5}$$
+        $$|p - p*| < p\times10^{-5}$$
+        $$-p\times10^{-5} < p - p* < p\times10^{-5}$$
+        $$-p\times10^{-5} + p < p* < p\times10^{-5} + p$$
+        The largest interval $p*$ must lie on is $ (p(-10^{-5} + 1),p(10^{-5} + 1) )$
+        \item Suppose $p*$ approximates the number p. What are the different types of error that you can use to quantify the accuracy of the approximation.\\
+        \begin{enumerate}
+            \item Relative error:  $\abs{\frac{p-p*}{p}}$
+            \item Absolute error:  $\abs{p-p*}$
+            \item Actual error:    $p-p*$
+        \end{enumerate}
+    \end{enumerate}
+    
+% PROBLEM 4
+    \item Below is a MATLAB implementation of the bisection method with some code missing.
+    \begin{enumerate}
+    \item Fill in the blanks to correctly execute the bisection method.
+    \begin{verbatim}
+    function [c,err,n] = bisection(f,a,b,tol,N)
+    %function to solve f(x) = 0 using the bisection method over [a,b]
+    %ASSUMPTIONS: we assume f(a)*f(b) < 0
+    %INPUTS: 
+    %f is a function at hand
+    % a is the lower bound of the tested interval
+    % b is the upper bound of the tested interval
+    % tol is the error tolerance
+    % N is the maximum number of iterations
+    %OUTPUTS:
+    % c is the computed root
+    % err is the error bound at the end
+    % n is the last ieration before breaking
+        n = 0;
+        a_n = a;
+        b_n = b;
+        err = b_n - a_n;
+        while err > tol && n < N
+            x_n = %(a_n + b_n)/2;
+            if f(x_n)*f(a_n) > 0
+                %a_n = x_n;
+                %c = a_n;  <--Consider revising to [b_n = b_n] based on previous semester.
+            elseif f(x_n)*f(b_n) >= 0
+                %b_n = x_n;
+                %c = b_n;  <--Consider revising to [a_n = a_n] based on previous semester.
+            end
+        err = (b_n - a_n)/2;
+        n = n + 1;
+    end
+    c = (b_n + a_n)/2.0;
+end
+    \end{verbatim}
+    
+    \item Is the code working if you consider $f(x) = x^4, a = -1, b = 2$? Explain why.\\\\
+    No. The bisection method has been established by the intermediate value theorem which states if the a function $f(x)$ is continuous in a given interval ([a,b]) and if evaluated endpoints $f(a)$ and $f(b)$ have opposite signs that is $f(a)\times f(b) < 0$ there there exists a root inside the interval. $$f(-1) = 1, f(2) = 2^4, f(-1)\times f(2) \not < 0$$ 
+    \end{enumerate}
+\end{enumerate}
+\end{document}

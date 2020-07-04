@@ -1,0 +1,617 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{pifont}
+\newcommand{\xmark}{\ding{55}}%
+% document size parameters
+\def\checkmark{\tikz\fill[scale=1.5](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{8.4in}
+\setlength{\textwidth}{6.5in}
+\setlength{\voffset}{-0.40in}
+\setlength{\headsep}{26pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+%commands 
+\newcommand{\MyTikzmark}[2]{%
+     \tikz[overlay,remember picture,baseline] \node [anchor=base] (#1) {$#2$};%
+}
+
+\newcommand{\DrawVLine}[3][]{%
+  \begin{tikzpicture}[overlay,remember picture]
+    \draw[shorten <=0.3ex, #1] (#2.north) -- (#3.south);
+  \end{tikzpicture}
+}
+
+\newcommand{\DrawHLine}[3][]{%
+  \begin{tikzpicture}[overlay,remember picture]
+    \draw[shorten <=0.2em, #1] (#2.west) -- (#3.east);
+  \end{tikzpicture}
+}
+
+% header information
+\pagestyle{fancyplain}
+\lhead{\large{{\bf  Numerical Analysis} }}
+\rhead{\large{{\bf Solutions}}}
+\author{Ramiro Gonzalez, Xavier Villa} 
+\title{Practice Final Exam}
+\date{Spring 2018}
+\begin{document}
+\maketitle
+
+
+\textbf{Here a list of things a student should be able to do to pass the class of Math 131. Work out the solutions as a preparation for the final exam.}
+
+
+\begin{enumerate}
+
+% Problem 1
+    \item Chapter 1\color{green}\checkmark\color{black}  \color{green}\Huge{100\%}\color{black} \large{}
+    \begin{enumerate}
+        \item State Taylor’s theorem, explain all notations. Approximate $e^{3x}-1$ about 0 with the second Taylor’s polynomial.\\
+        \\
+        \color{red}
+            \textbf{Verbose Answer:}\\
+            The following is necessary in order to apply Taylor's theorem.\\
+            \textit{$f \in C^n[a,b], f^{n +1}$ exist on given interval and $x_0 \in [a,b]$ there exists a number
+            $\xi(x)$ between $x_0$ and $x$.}\\
+            \textbf{Layman Translation}:\\ $C^n$ means Continuous differential nth derivative. $f^{n + 1}$ is the next derivative.\\
+            \textit{Taylor's theorem states that if there is a function $f(x)$ that is continuous differential n times on [a,b] and is continuous on the (n + 1) derivative exist on the given interval and there is an $x_0$ in that interval, then there is a number that we call $\xi(x)$ that exists in between $x_0$ and $x$ }\\\\
+            Enumerated Answer:
+            \begin{enumerate}
+                \item We know that $f(x) = P_n(x) + R_n(x) $
+                \item The function $f(x)$ is defined by the \textbf{nth Taylor polynomial} $P_n(x)$ plus the \textbf{remainder term} $R_n(x)$ nth Taylor Polynomial.
+                \item $P_n(x)$ \textbf{nth Taylor Polynomial}.\\ \textbf{n} is the degree, for example "second Taylor Polynomial".\\$f^{k}(x_0)$ is the kth derivative evaluated at the point of interest. \\
+                $\sum_{k = 0}^{n}$ is summation from k = 0 to n which is the degree.
+                $$P_{n}(x) = \sum_{k = 0}^{n} \frac{f^{k}(x_0)}{k!}(x - x_0)^{k} $$
+                Since $x_0 = 0$ then called the \textbf{Maclaurin Polynomial}
+                $$P_{n}(x) = \sum_{k = 0}^{n} \frac{f^{k}(x_0)}{k!}(x)^{k} $$
+                \item $R_n(x)$ is the \textbf{Remainder term} or \textbf{Truncation Error}\\
+                $f^{n + 1}$ is the nth + 1 derivative, that is one more degree. \\
+                $\xi(x)$ is a number between $x_0$ and $x$. 
+                $$R_{n}(x) = \frac{f^{n + 1}(\xi(x)}{(n + 1)!}(x - x_0)^{n + 1}$$
+                Now we approximate $e^{3x} - 1$ about x = 0, second taylor
+                \begin{enumerate}
+                    \item Let $f(x) = e^{3x} - 1$, $x_0 = 0$
+                    \item Find n + 1 derivatives $f'(x) = 3e^{3x}, f''(x) = 9e^{3x}, f^3(x) = 27e^{3x}$. $f^{3}$ is for the truncation. 
+                    \item plug  into the formula. Lets expand first.
+                    $$P_n(x) = f(x_0) + f'(x_0)(x - x_0) + \frac{f''(x_0)(x - x_0)^2}{2}$$
+                    \item Plug in
+                    $$P_n(x) = 0 + 3(x) + \frac{9}{2}(x)^2$$
+                    \item 
+                    $$R_{n}(x) = \frac{f^{3}(\xi(x)}{(3)!}(x - x_0)^{3}$$
+                    $$R_{n}(x) = \frac{27e^{3\xi(x)}}{(3)!}(x - x_0)^{3}$$
+                    \item Therefore. 
+                    $$f(x) = 3(x) + \frac{9}{2}(x)^2 + \frac{27e^{3\xi(x)}}{(3)!}(x)^{3}$$
+                \end{enumerate}
+            \end{enumerate}
+        \color{black}
+        
+        \item Define 3 types of errors that can be used to compare a number and its approximation.\\
+        \\
+        \color{red}
+            Answer:\\
+            $p*$ is an approximation to p. \\
+            p is the (actual value) or a number.\\
+            The following provides how close the approximation is to the number.\\
+            \begin{enumerate}
+                \item Relative error:  $\abs{\frac{p-p*}{p}}$ if $p \neq 0$
+                \item Absolute error:  $\abs{p-p*}$
+                \item Actual error:    $p-p*$
+        \end{enumerate}
+        \color{black}
+    \end{enumerate}
+        
+%Problem 2
+    \item Chapter 2 
+    \color{green}\checkmark\color{black} \color{green}\Huge{100\%}\color{black} \large{}\\
+    Consider the function $f(x) = (x-1)^2-1 \text{ for } x \in [0.5, 3]$.
+    \begin{enumerate}
+        \item Can you use bisection method to solve $f(x) = 0$ ? Justify your answer, and if so, provide the first 2 steps.\\
+        \\
+        \color{red}
+            Answer:\\
+            Bisection Method cannot guarantee an exact solution to the function, but it can be used to \textit{approximate} the solution if $f$ is a continuous function defined on the interval $[a, b]$, with $f(a)$ and $f(b)$ of opposite sign. The Intermediate Value Theorem implies that a number $p$ exists in $(a, b)$ with $f(p) = 0$. If there is more then one root within the interval it will not find both.\\\\
+            Enumerate Answer:\\
+            To solve $f(x) = 0$ we must show that the Intermediate Value Theorem Applies. 
+            \begin{enumerate}
+                \item Show $f(x)$ is continuous on the interval [a,b]
+                $$f'(x) = 2(x-1)$$ 
+                Since $f'(x)$ is a polynomial it is continuous everywhere thus on [.5,3].
+                \item Evaluate at endpoints that is $f(a)$ and $f(b)$
+                $$f(.5) = -.75 \text{ and } f(3) = 3$$
+                \item Show $f(a)\cdot f(b) < 0$ that is they have opposite signs. 
+                $$f(.5)\cdot f(3) < 0$$
+                Therefore the IVT is met. The bisection method applies since we can guarantee there is at least one root. 
+            \end{enumerate}
+            First 2 steps:
+            \begin{enumerate}
+                \item[step 1] Let $a_1 = .5$ and $b_1 = 3$
+                $$f(.5) = -.75 \text{ and } f(3) = 3$$
+                 $p_1 = \frac{ a + b}{2} = \frac{3.5}{2} = 1.75$ the \textbf{midpoint}\\
+                 $$f(p_1) = f(1.75) = -0.4375$$
+                 Since $f(p_1)$ has the same sign as $f(.5)$ our we have a new a, named $a_2 = p_1$. Note that $b_2 = b$ stays the same.\\
+                 \item[step 2] Let $a_2 = 1.75$ and $b_2 = 3$
+                 $$f(1.75) = -.4375 \text{ and } f(3) = 3$$
+                 $p_2 = \frac{a + b}{2} = \frac{4.75}{2}  = 2.375$\\
+                $$f(p_2) = f(2.375) =  0.890625$$
+                 Since $f(p2)$ has same sign as b, therefore we have a new $b_3 = p_2$. We do not continue. \\
+            \end{enumerate}
+            The goal is for the interval $[a,b]$ to become increasingly small. 
+        \color{black}
+        \item Rewrite this problem as a fixed-point problem $g(x) = x$, where $g$ is a function to define. What is the theoretical rate of convergence of the fixed-point iteration? Is the fixed-point converging in that case? Justify your answer.\\
+        \\
+        \color{red}
+            Enumerated Answer:\\
+            \begin{enumerate}
+                \item We are given $f(x) = (x-1)^2 - 1$
+                \item We want to find $g(x)$ 
+                \item[Option1 ] You can isolate x on $f(x) = (x-1)^2 - 1$
+                $$f(x) = x^2 - 2x + 1 - 1 = x^2 - 2x$$
+                $$f(x) = (x^2 - 2x)$$
+                $$\text{set f(x) = 0 } x^2 - 2x = 0 $$
+                $$x^2 - 2x = 0 \rightarrow 2x = x^2 \text{ solve for x} $$
+                $$g(x) = x = \frac{x^2}{2} \text{ this is our } g(x)$$
+                \item[Option 2]You can add zero, that is $f(x) = (x -1)^2 - 1 + (x - x)$ and move one x to the other side. 
+                $$g(x) = x = (x-1)^2 - 1 + x \text{ this is our g(x)}$$
+            \end{enumerate}
+            The theoretical rate of convergence is $\mathcal{O}(k^n)$ where n is the number of iterations and k is the bound. \\\\
+            The fixed point converges if it is bounded, that is $0 \leq k \leq 1$ the smaller the k the faster it converges. \\
+            We want to show there exist a k such that $|g'(x)| \leq 1$ . Chose either g(x)
+            \begin{enumerate}
+                \item Show g(x) maps onto itself
+                $$g(x) = \frac{x^2}{2}$$
+                $g(.5) = .125$,  Failed, convergence can not confirmed. 
+                \item or $$g(x) = \frac{x^2}{2}$$
+            $$|g'(x)| = |x|$$
+            if $g'(x = .5) = .5 < 1$ and $g'(x = 3) = 3 > 1$
+            Therefore fixed point is not converging. The bound not found. 
+            \end{enumerate}
+            
+        \color{black}
+        \item Using Newton’s method, provide $x_1$ for $x_0 = 1.5$. Show steps. What is the order of convergence of the sequence of error? Explain the limitations and advantages of this method compared to other numerical methods for root-finding problems.\\
+        \\
+        \color{red}
+            Answer:\\
+           \begin{enumerate}
+                \item Our initial guess is $x_0 = 1.5$, $$f(x) = (x -1)^2 - 1$$
+                $$f'(x) = 2(x - 1)$$
+                \item Before you begin, make sure $f'(x_0) \neq = 0$\\
+                $f(1.5) = -.75$, $f'(1.5) = 2(.5) = 1$
+                \item Newton's method is as follows. 
+                $$x_i = x_{i - 1} - \frac{f(x_{i - 1})}{f'(x_{i - 1})}$$
+                \item We want to find $x_1$ thus $i = 1$
+                $$x_1 = x_{0} - \frac{f(x_{0})}{f'(x_{0})}$$
+                \item We evaluate
+                $$x_1 = 1.5 - \frac{-.75}{1} = 2.25$$
+                The order of convergence is Quadratic for Newton's method.
+            \end{enumerate}
+            \begin{tabular}{c|c}
+                 Advantages &  Disadvantages \\
+                 \hline
+            Accurate approximations with very little iterations.   &
+            Our initial approximation $x_0$ 
+            has to be close to root\\
+            \hline
+            Whether it converges or not is clear & We must find derivative
+            \end{tabular}
+        \color{black}
+     \end{enumerate}
+     
+     % Problem 3
+    \item Chapter 3 \color{green}\checkmark\color{black}
+    \begin{enumerate}
+        \item Given $x_0 = 1, x_1 = 1.5, x_2 = 2, \text{ and } y_0 = 3.4, y_1 = 1.2, y_2 = -3, \text{ provide the Lagrange interpolant passing}$\\
+        $\text{ through }  (x_k , y_k ) \text{ for } k = 0, 1, 2.$ Explain all your notations and provide steps\\
+        \\
+        \color{red}
+            Answer:\\
+            The Lagrange Polynomial is an interpolation method and is as follows. 
+            $$P_n(x) = \sum_{k = 0}^{n} f(x_k)\mathcal{L}_{n,k}(x)$$
+            $P_n(x)$ is called the \textbf{nth Lagrange Interpolating Polynomial}\\
+            n is called the \textbf{nth (degree)}\\
+            $x_0, x_1,...x_k$ are the \textbf{ nodes}\\
+            $f(x_0) = y_0....f(x_k) = y_k$ are \textbf{ nodes evaluated by the function. }\\
+            The following shows the $\mathcal{L}_{n,k}$ \textbf{Called the Lagrange Basis Polynomial}
+            $$\text{where }  \mathcal{L}_{n,k}(x) = \frac{\Pi_{j=0, j\neq k}^{n}(x-x_j)}{\Pi_{j=0, j\neq k}^{n}(x_k-x_j)}$$
+            \\
+            \begin{enumerate}
+                \item First we want to evaluate the Lagrange Basis Polynomials where our degree is 2. And our $k$ will iterate $0,1,2$
+                $$ \mathcal{L}L_{2,0}(x) = \frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)} = 2x^2 -7x +6 $$
+                 $$ \mathcal{L}_{2,1}(x) = \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)} = -4x^2 + 12x -8 $$
+                  $$ \mathcal{L}_{2,2}(x) = \frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)} = 2x^2 -5x +3 $$
+                 \item The goal is to evaluate as the following form 
+                 $$ P(x) = y_0\mathcal{L}_{2,0}(x) + y_1\mathcal{L}_{2,1}(x) + y_2\mathcal{L}_{2,2}(x) $$
+                 \item Evaluate (plug in)
+                   $$ P(x) = 3.4(2x^2 -7x +6) + 1.2(-4x^2 + 12x -8) - 3(2x^2 -5x +3) $$
+                  $$ P(x) = (6.8x^2 -23.8x +20.4) + (-4.8x^2 + 14.4x -9.6) + (-6x^2 +15x - 9) $$
+                   $$ P(x) = (6.8x^2 -4.8x^2 -6x^2) + 
+                   (-23.8x + 14.4x  +15x) + (20.4 -9.6 - 9) $$
+                   $$ P(x) = -4x^2 + 5.6x +  1.799$$
+            \end{enumerate}
+            
+        \color{black}
+        
+        \item Given $x_0 = 1, x_1 = 1.5, x_2 = 2, \text{ and } y_0 = 3.4, y_1 = 1.2, y_2 = -3$, provide all the coefficients needed in Newton’s divided differences, and give the expression of the created interpolant. Explain all your notations and provide steps.\\
+        \\
+        \color{red}
+            \begin{enumerate}
+                \item First we define the expression for Newton Divided Difference. 
+                $$ P(x) = f(x_0) + \sum_{k=1}^{n}f[x_0, \dots, x_k](x-x_0) \dots(x-x_{k-1}) $$
+                \item Consider the degree n = 2, we need the following coefficients. 
+                \[
+            \begin{array}{cccccc}
+            f[x_0] \\
+                &       f[x_0, x_1] \\
+            f[x_1] &             & f[x_0, x_1, x_2]\\
+                &       f[x_1, x_2] \\
+            f[x_2]
+            \end{array}
+            \]
+            \item Memorize the following. 
+            $$ f[x_0], f[x_1], \text{ and } f[x_2] \text{ are given.} $$
+            $$ f[x_0, x_1] = \frac{f[x_1]-f[x_0]}{x_1-x_0} = -\frac{22}{5} $$
+            $$ f[x_1, x_2] = \frac{f[x_2] - f[x_1]}{x_2 - x_1} = \frac{-42}{5} $$
+            $$ f[x_0, x_1, x_2] = \frac{f[x_1, x_2] - f[x_0, x_1]}{x_2 - x_0} = -4 $$
+            \item We want this form 
+            $$ P(x) = f[x_0] + f[x_0, x_1](x-x_0) + f[x_0, x_1, x_2](x-x_0)(x-x_1) $$
+            \item Plug $$ P(x) = 3.4 + \frac{-22}{5}(x - 1) - 4(x-1)(x - 1.5) $$
+            $$ P(x) = 3.4 + \frac{-22}{5}(x - 1) - 4[x^2 -2.5x + 1.5]) $$
+            $$ P(x) = 3.4 + \frac{-22}{5}x - \frac{-22}{5} - 4x^2 + 4*2.5x - 4*1.5)$$
+            $$ P(x) = - 4x^2 + \frac{28}{5} \frac{9}{5}$$
+
+            \end{enumerate}
+            
+            
+        \color{black}
+        
+        \item Explain in one sentence what is a cubic spline interpolant.\\
+        \\
+        \color{red}
+            Answer:\\
+            The Cubic Spline Interpolant is a \textbf{piece-wise}, \textbf{3rd order polynomial} construction that passes through a set of control points. (interpolates points using a polynomial of degree 3)
+        \color{black}
+    \end{enumerate}
+    
+    % Problem 4
+    \item Chapter 4 \color{green}\checkmark\color{black}\\
+    Consider $x_0 = 0, x_1 = 0.5, x_2 = 1, x_3 = 1.5, f(x_0) = 3.4, f(x_1) = 1.2, f(x_2) = -3, f(x_3) = -1$, and the integral $I = \int_0^{1.5}f(x)dx$.
+    \begin{enumerate}
+        \item Use the 3-point midpoint rule to approximate $f'(1)$.\\
+        \\
+        \color{red}
+            Answer:\\
+            \begin{enumerate}
+                \item Define the 3-point midpoint rule. 
+                $$ f'(x)\approx \frac{1}{2h}(f(x +h)-f(x -h)) $$
+                \item find h, $h = x_1 - x_0, x_2 - x_1 = .5$
+                Where $h$ is the distance between the given $x$ values
+                \item x = 1, we want to find $f'(x)$
+                $$ f'(1)\approx \frac{1}{2(0.5)}(f(1 +0.5)-f(1 -0.5)) $$
+                $$ f'(1)\approx f(1.5)-f(0.5) = f(x_3) - f(x_1) = -1 - 1.2 = -2.2$$
+            \end{enumerate}
+        \color{black}
+        
+        \item Provide the General formula for the Composite Trapezoid rule. Explain all your notations. Apply Composite Trapezoid rule to approximate $I$.\\
+        \\
+        \color{red}
+            Enumerated Answer:\\
+            \begin{enumerate}
+                \item Original Definition.\\
+                a is the lower bound and b is the upper bound.\\ $[a,b]$ is an interval.\\
+                h is defined as $h = \frac{b - a}{N} $
+                
+                $$\int_{a}^{b}f(x)dx = \frac{h}{2}\Big[f(a) + 2 \sum_{j = 1}^{n - 1}f(x_j) + f(b)\Big]$$
+                \item Move around
+                $$\int_{a}^{b}f(x)dx = \frac{h}{2}\Big(f(a) + f(b)\Big) + \frac{h}{2}\Big[ 2\sum_{j = 1}^{n - 1}f(x_j)\Big]$$
+                $$\int_{a}^{b}f(x)dx = \frac{h}{2}\Big(f(a) + f(b)\Big) + h\Big[\sum_{j = 1}^{n - 1}f(x_j)\Big]$$
+                
+                \item Now we solve for the following. $h = \frac{1.5 - 0}{3} = \frac{1}{2}$
+                \item Evaluate
+                 $$\int_{0}^{1.5}f(x)dx = \frac{.5}{2}\Big(3.4 - 1\Big) + (.5)\Big[\sum_{j = 1}^{n - 1}f(x_j)\Big]$$
+                 $$\int_{0}^{1.5}f(x)dx = \frac{.5}{2}\Big(3.4 - 1\Big) + (.5)\Big[(1.2 - 3)\Big]$$
+                 $$\int_{0}^{1.5}f(x)dx = \text{ Left to the Reader, \textbf{should be -0.3}}$$
+                 
+            \end{enumerate}
+            Other Answer:\\
+            The Trapezoidal rule relies on this basic formula:
+            $\int_{b}^{a}f(x)dx \approx \frac{h}{2}(f(x_a)+(x_b))$
+            The composite Trapezoidal rule does this by breaking up $a$ and $b$ into smaller segments and attractively adds up each result to get a closer approximation for the integral across the interval.\\
+            \\
+            Thus, the general formula for Composite Trapezoidal Rule is:
+            $$ I = I + \frac{h}{2}(f(x_n) + f(x_{n+1})) $$
+            $$\text{for }n = 0\rightarrow N-1$$
+            \item Where $I = 0$ initially, N is the number of $x$ values being evaluated across our interval, $h$ (timestep) is the distance between the $x$ values, $n$ is the $n^{\text{th}}$ iteration and $x_n$ and $x_{n+1}$ are the $x$ values being evaluated in each $n^{th}$ iteration.
+        \color{black}
+        
+        \item State precisely $3$ differences between Composite Trapezoid rule and Composite Simpson’s rule.\\
+        \\
+        \color{red}
+            Answer:\\
+            \begin{enumerate}
+            \item The error term in Simpson’s rule involves the fourth derivative of $f$, so it gives exact results when applied to any polynomial of degree three or less. The Trapezoidal rule however gives zero error for polynomials of degree one our less.
+            \item Simpson's rule requires 3 $x$ values for each iteration, and the Trapezoidal rule requires only 2 per iteration.
+            \item The order of convergence for Trapezoidal rule is $O(h^2)$ and order of convergence for Simpson's is $O(h^4)$
+            \item  Trapezoid consists of the summation of trapezoid, that is there is a rectangle and a triangle, a slanted line. Simpson’s rule uses a rectangle and a parabola, making it slightly more accurate.
+            \end{enumerate}
+        \color{black}
+        
+    \end{enumerate}
+    
+    % Problem 5
+    \item Chapter 5 \color{green}\checkmark\color{black}\\
+    Consider the IVP $y'(t) = -4y,\: 1 \leq t \leq 4, y(1) = 4$.
+    \begin{enumerate}
+        \item Show that this problem is well-posed, THEN provide the exact solution.\\
+        \\
+        \color{red}
+            Answer:\\
+            \begin{enumerate} 
+                \item To show the problem is well-posed, we must show the Lipschitz condition is met.\\
+                $ D = \{(t,y)|a \leq t \leq b \text{ and } -\infty < y < \infty\}$
+                \\
+                \item Make sure $f(t,y)$ is continuous, it is a polynomial therefore it is. 
+                \item Let $f(t,y) = -4y$
+                $$\Big|\frac{f(t,y_2) - f(t,y_1)}{y_2 - y_1}\Big| \leq \frac{\partial}{\partial y}(-4y)$$
+                $$\|f(t,y_2) - f(t,y_1)| \leq \frac{\partial}{\partial y}|-4||y_2 - y_1|$$
+                \item We have found a constant L = 4 Therefore the Lipschitz condition is met. $f(t,y)$ is continuous and meets the Lipschitz condition therefore it is well posed. 
+            \end{enumerate}
+        Next we find the exact solution. 
+        $$\frac{dy}{dt} = -4y \text{ separable differentiable}$$
+        $$\frac{1}{-4y}dy = dt \rightarrow -\frac{\ln(y)}{4} = t + C$$
+        $$y = e^{-4t}e^{-4c}$$
+        $$y = e^{-4t}C_1$$
+        $$C = 4e^{4}$$
+        Solution 
+        $$y(t) = 4e^{-4t + 4}$$
+        \color{black}
+       
+        
+        \item Apply Euler’s method to approximate the solution of the IVP. considering a time-step $\Delta t = 0.5$. Explain all notation, give only the general and simplified expression for some index j and comment on the needed initial value(s)..\\
+        \\
+        \color{red}
+            Answer:\\
+            \begin{enumerate}
+            \item Euler's method is defined by the following algorithm:
+            $$y_{i+1} = y_{i} + hf(t_{i},y_{i}) $$
+            \item For $i = 0\rightarrow (N-1)$ where $N$ is the number of points being evaluated, $h$ (timestep, $\Delta t$) is the distance between these points, and $f(t_i, y_i)$ is the function given evaluated at $t_i$, and $y_i$, the values being evaluated for in each iteration.
+            \item Our values of $t_i$ are calculated by $t_{i+1} = t_i + h$ or equivalently, $t_{i+1} = t_i + \Delta t$
+            \item With time-step $\Delta t = h = 0.5,$ we have the following for out values of $t$:
+            $$ t_0 = 1,\;  t_1 = 1.5,\;  t_2 = 2.0,\;  t_3 = 2.5,\;  t_4 = 3.0,\;  t_5 = 3.5,\;  t_6 = 4.0 $$
+            \item Since we are evaluating 7 points from 0 to $N-1$, our $i$ will take on values $0, 1, \dots, 6 $
+            \item Begin solving, with $y_0 = \alpha$ defined as given by: $y(1) = 4 = \alpha$
+            $$ y_1 = y_0 + hf(t_0, y_0) $$
+            $$ y_2 = y_1 + hf(t_1, y_1) $$
+            $$ \vdots $$
+            $$ y_6 = y_5 + hf(t_5, y_5) $$
+            $$ y_1 = 4 + \frac{1}{2}4(-4) = -4$$
+            $$ y_2 = 12 + \frac{1}{2}(-4)(-4) = 4 $$
+            \item Here we notice this pattern is recursive.
+            $$ y_3 = -4 $$
+            $$ y_4 = 4 $$
+            $$ y_5 = -4 $$
+            $$ y_6 = 4 $$
+            Thus we have everything for our solution.\\
+            Euler's method returns:\\
+            \\
+            \begin{tabular}{c|c}
+                 t_i &  y_i \\
+                 \hline
+            t_0 = 1 &  y_0 = 4\\
+            t_1 = 1.5 &  y_1 = -4\\
+            t_2 = 2 &  y_2 = 4\\
+            t_3 = 2.5 &  y_3 = -4\\
+            t_4 = 3 &  y_4 = 4\\
+            t_5 = 3.5 &  y_5 = -4\\
+            t_6 = 4 &  y_6 = 4\\
+            \end{tabular}
+            \end{enumerate}
+        \color{black}
+        
+        \item Provide a stable implicit 3-step method to approximate the solution of the IVP. Explain all notations, and comment on the needed initial value(s).\\
+        \\
+        \color{red}
+            Answer:\\
+            Let's make up a method that is 3-step implicit, and test its stability.\\
+            $$ W_{j+1} = 2W_{j+1} - W_{j} + W_{j-1} - W_{j-2} + f(t, W_j) $$
+            The first step is to find the characteristic polynomial by setting $W_{j+1} = \lambda^m$ Where $m$ is the number of steps (3).
+            $$ W_{j+1} = \lambda^3 $$
+            $$ \lambda^3 = 2\lambda^3 - \lambda^2 + \lambda -1 $$
+            $$ \lambda^3 - \lambda^2 + \lambda -1 = 0 $$
+            Now we solve for the roots to evalutate the stability.
+            $$ \lambda^2(\lambda -1)(\lambda -1) = 0 $$
+            $$ (\lambda -1)(\lambda^2 + 1) = 0 $$
+            $\therefore$ The roots of the characteristic polynomial are $\lambda = \{i, -i, -1\}$
+            This satisfies the root condition, since none of the absolute value of the roots are greater than 1. This made-up method is strong stable because are only one roots that are 1.
+        \color{black}
+        
+    \end{enumerate}
+    
+    % Problem 6
+    \item Chapter 6\color{green}\checkmark\color{black}\\
+    Consider the system $Ax = b$ with $A = \begin{pmatrix} 1 & 2 & 3\\ 2 & 1 & 2\\ 3 & 2 & 1 \end{pmatrix}$ and $B = \begin{pmatrix} 1\\ 2\\ 3 \end{pmatrix}$
+    \begin{enumerate}
+        \item Compute $det(A)$ and conclude some properties about the system.\\
+        \color{red}
+            Answer:\\
+            $3 \cross 3$ Matrix.
+            
+            \begin{enumerate}
+                \item Finding det(A)\\
+
+\begin{bmatrix}
+    \MyTikzmark{leftA}{1} &  \MyTikzmark{topB}{2} &  \MyTikzmark{rightA}{3} \\
+     2 & 1 & 2 \\
+   \MyTikzmark{bottomA}{3} & 2 & \MyTikzmark{bottomB}{1} 
+\end{bmatrix}
+\DrawVLine[red, thick, opacity=0.5]{leftA}{bottomA}
+\DrawHLine[blue, thick, opacity=0.5]{leftA}{rightA} = 1(1 - 4) = -3
+
+\begin{bmatrix}
+    \MyTikzmark{leftA}{1} &  \MyTikzmark{topB}{2} &  \MyTikzmark{rightA}{3} \\
+     2 & 1 & 2 \\
+   \MyTikzmark{bottomA}{3} &  \MyTikzmark{bottomB}{2} & \MyTikzmark{bottomA}{1} 
+\end{bmatrix}
+\DrawVLine[red, thick, opacity=0.5]{topB}{bottomB}
+\DrawHLine[blue, thick, opacity=0.5]{leftA}{rightA} = 2(2 - 6) = -8
+
+
+
+\begin{bmatrix}
+    \MyTikzmark{leftA}{1} &  \MyTikzmark{topB}{2} &  \MyTikzmark{rightA}{3} \\
+     2 & 1 & 2 \\
+   \MyTikzmark{bottomA}{3} &  \MyTikzmark{bottomB}{2} & \MyTikzmark{bottomA}{1} 
+\end{bmatrix}
+\DrawVLine[red, thick, opacity=0.5]{rightA}{bottomA}
+\DrawHLine[blue, thick, opacity=0.5]{leftA}{rightA} = 3(4 - 3) =3
+\item det(A) = -3 + 8 + 3 = 8
+\begin{enumerate}
+    \item Since det(A) $\neq 0$ the matrix is invertible.
+    \item the rows and columns are linearly independent. 
+    \item It is also symmetric and singular. 
+\end{enumerate}
+            \end{enumerate}
+        \color{black}
+        
+        \item Perform Gaussian Elimination to reduce the system. Show steps.\\
+        \\
+        \color{red}
+            Answer:\\
+            \begin{enumerate}
+                \item Put A and B in Augmented form \\ \textbf{Left To The Reader}
+                $$\begin{pmatrix} 1 & 2 & 3 &\vline & 1\\ 2 & 1 & 2 &\vline & 2 \\ 3 & 2 & 1  & \vline  & 3 \end{pmatrix}$$
+                
+                $2r_1 - r_2 \rightarrow r_2 $
+                $$\begin{pmatrix} 1 & 2 & 3 &\vline & 1\\
+                0 & 3 & 4 &\vline & 0 \\ 
+                3 & 2 & 1  & \vline  & 3 \end{pmatrix}$$
+                
+               $3r_1 - r_3 \rightarrow r_3 $
+                $$\begin{pmatrix} 1 & 2 & 3 &\vline & 1\\
+                0 & 3 & 4 &\vline & 0 \\ 
+                0 & 4 & 8  & \vline  & 0 \end{pmatrix}$$
+                
+                $\frac{4}{3}r_2 - r_3 \rightarrow r_3 $
+                $$\begin{pmatrix} 1 & 2 & 3 &\vline & 1\\
+                0 & 3 & 4 &\vline & 0 \\ 
+                0 & 0 & \frac{-8}{3}  & \vline  & \frac{4}{3} \end{pmatrix}$$
+                
+                $\frac{-3}{8}r_3 \rightarrow r_3 $
+                 $$\begin{pmatrix} 1 & 2 & 3 &\vline & 1\\
+                0 & 3 & 4 &\vline & 0 \\ 
+                0 & 0 & 1  & \vline  & \frac{-1}{2} \end{pmatrix}$$
+                
+                $4r_3 - r_2 \rightarrow r_2$
+                 $$\begin{pmatrix} 1 & 2 & 3 &\vline & 1\\
+                0 & 3 & 0 &\vline & -2 \\ 
+                0 & 0 & 1  & \vline  & \frac{-1}{2} \end{pmatrix}$$
+                
+                $3r_3 - r_1 \rightarrow r_1$
+                 $$\begin{pmatrix} 1 & 2 & 0 &\vline & \frac{-5}{2}\\
+                0 & 3 & 0 &\vline & -2 \\ 
+                0 & 0 & 1  & \vline  & \frac{-1}{2} \end{pmatrix}$$
+                $r_2/3 \rightarrow r_2$
+                 $$\begin{pmatrix} 1 & 2 & 0 &\vline & \frac{-5}{2}\\
+                0 & 1 & 0 &\vline & -2/3 \\ 
+                0 & 0 & 1  & \vline  & \frac{-1}{2} \end{pmatrix}$$
+                $2r_2 - r_1\rightarrow r_1$
+                 $$\begin{pmatrix} 1 & 0 & 0 &\vline & \frac{7}{6}\\
+                0 & 1 & 0 &\vline & -2/3 \\ 
+                0 & 0 & 1  & \vline  & \frac{-1}{2} \end{pmatrix}$$
+            \end{enumerate}
+            
+        \color{black}
+        
+        \item Explain what is the LU factorization.\\
+        \\
+        \color{red}
+            Answer:\\ L stands for \textbf{Lower triangular matrix} and U stands for \textbf{Upper triangular matrix} .\\
+            LU is a modified form of the Gaussian elimination, The reason for LU factorization is to not have to interchange rows. 
+            
+        \color{black}
+        
+    \end{enumerate}
+    
+    % Problem 7
+    \item Chapter 7\color{green}\checkmark\color{black}\\
+    Consider the system $Ax = b$ with $A = \begin{pmatrix} 1 & 2 & 0\\ 2 & 1 & 2\\ 0 & 2 & 1 \end{pmatrix}$ and $B = \begin{pmatrix} 1\\ 2\\ 3 \end{pmatrix}$
+    \begin{enumerate}
+        \item Compute the $l_2$ norm of A.\\
+        \\
+        \color{red}
+            Answer:\\
+            Because this matrix is symmetric, $A = A^T$ we can take a shortcut.\\
+            We must first find the Eigenvalues. Then we take the largest Eigenvalue, and multiply this value by the largest value in A.
+            $$ A = \begin{pmatrix} 1 & 2 & 0\\ 2 & 1 & 2\\ 0 & 2 & 1 \end{pmatrix} $$
+            $$ det(A - \lambda I)=0 $$
+            $$ A-\lambda I = \begin{pmatrix} 1-\lambda & 2 & 0\\ 2 & 1-\lambda & 2\\ 0 & 2 & 1-\lambda \end{pmatrix} $$
+            $$ det(A - \lambda I)=\lambda^3 -3\lambda^2 -5\lambda +7 = 0 $$
+            $$ \lambda = {1,\:1+2\sqrt{2},\:1-2\sqrt{2}} $$
+            Since $\lambda = 1+2\sqrt{2}$ is the largest Eigenvalue, we can simply multiply that by the largest value of A.
+            The largest value in A is 2, so $2(max(\lambda)) = 2(1+2\sqrt{2}) = 2 + 4\sqrt{2}$
+        \color{black}
+        
+        \item Provide the algorithm for Jacobi iteration, and provide all the needed matrices for the given system. Under which condition is this algorithm converging?\\
+        \\
+        \color{red}
+            Answer:\\
+            Enumerated Answer:
+            \begin{enumerate}
+                \item Given \textbf{A} and \textbf{b}. Inital approximation as $x_1^0,x_2^0.....x_n^0$
+                \item Make a system of equations, solve for $x_1^1,x_2^1...x_n^1$
+                \item Use the initial approximation. Then $x_1^2,x_2^2,,,x_n^2$ is solved
+                \item use the second intial approximation to approximate $x_1^3,x_2^3...x_n^3$
+                \item continue
+                \item It converges when the spectral radius $\rho(M^-1\cdot N) < 1$
+            \end{enumerate}
+            Also an Answer:\\
+            For this Method, we need the given matrix A, the matrices: U, L, and D, the vector $b$, and we will approximate $x$ given an initial guess we call $x_0$
+            Recall that $Ax = b$\\
+            \\
+            $A= \begin{pmatrix} 1 & 2 & 0\\ 2 & 1 & 2\\ 0 & 2 & 1 \end{pmatrix}$\\
+            \\
+            To get this problem in the form $ A = M - N  $, we will need $U,\:L,\:D$ such that $A = U + L + D$\\
+            and U is the upper right portion of A (excluding the diagonal), L is the lower left portion of A (excluding the diagonal), and D is the diagonal of A.
+            $ A = M - N $\\
+            \\
+            $ \begin{pmatrix} 1 & 2 & 0\\ 2 & 1 & 2\\ 0 & 2 & 1 \end{pmatrix} = U + L + D =\begin{pmatrix} 0 & 2 & 0\\ 0 & 0 & 2\\ 0 & 0 & 0 \end{pmatrix} +\begin{pmatrix} 0 & 0 & 0\\ 2 & 0 & 0\\ 0 & 2 & 0 \end{pmatrix} + \begin{pmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{pmatrix} $\\
+            \\
+            $ A = M - N $\\
+            $ \text{let }M = D $\\
+            $ \text{let }N = (-U-L) $\\
+            $ \text{Such that }A = D - (-U-L) $\\
+            $ \text{Since }Ax = b, \text{ We know that } Ax = Dx - (-U-L)x = b $\\
+            $ \text{ Rearranging, we have } Dx = b + (-U-L)x $\\
+            $ \text{Getting $x$ by itself requires multiplying both sides by the inverse of D.} $\\
+            $ x = D^{-1}b + D^{-1}(-U-L)x $\\
+            $ \text{We know that our diagonal D is the identity matrix: }\begin{pmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{pmatrix} $\\
+            \\
+            $\rho$ is the spectral radius. \\
+            Leaving us with the Jacobi Algorithm:
+            $$x = b + (-U-L)x  $$   
+            This algorithm converges if and only if: \\
+            $$\rho(M^{-1}\cdot N)<1 \text{ Where } M^{-1} = D^{-1}, \text{ and } N = (-U-L) $$
+            Note: Here, $\rho$ denotes the maximum eigenvalue of the resulting Matrix in parenthesis.\\
+            Since our $\rho = 1+2\sqrt2 \: >\: 1$, the Jacobi iteration solver is not converging.
+            
+        \color{black}
+        
+    \end{enumerate}    
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{listings}
+\usepackage{graphicx}
+% document size parameters
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{8.4in}
+\setlength{\textwidth}{6.5in}
+\setlength{\voffset}{-0.40in}
+\setlength{\headsep}{26pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% header information
+\pagestyle{fancyplain}
+\lhead{\large{{\bf MATH131: Numerical Methods} }}
+\rhead{\large{{\bf Surviving MATH 131}}}
+\title{Homework 00}
+\author{Ramiro Gonzalez }
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item No comments or questions. 
+    \item What I learned from the Book
+    $\bf{7}$
+    \begin{enumerate}
+        \item The preface States it is recommend that a student taking this course be familiar with one year long calculus course, and gave a summary of what numerical analysis is used for approximations and this book is devoted to the techniques. 
+        \item In math 24 I was introduced to matrices, solving differential equations and techniques to find roots, graphing was involved such as slope fields. In computing courses I learned how to use IDEs and languages such as Java, C, C++, and how to create functions, implement algorithms, creating loops and conditional statement. 
+    \end{enumerate}
+    \item Familiarize with MATLAB
+    \begin{enumerate}
+        \item version '9.2.0.556344 (R2017a)', I am planning on using it on my personal  computer, it is installed, I do not plan to use the campus labs, unless I need to. 
+        \item I have asked. 
+        \item I have not used MATLAB before. 
+        \item I typed doc on MATLAB on the getting started with MATLAB,I clicked on Desktop basics, to set up my work space and a working directory, I was given example on how to use built in functions such trigonometric functions, on Matrices and Arrays I was shown how to create single and multidimensional arrays. Array indexing on how to access elements and manipulate arrays by using the indices of elements. In graphics examples where given of how to plot and label axis, and built in functions such as polyval. 
+        \item The online documentation is the same as the built in documentation in MATLAB, I learned how to initialize arrays, and store variables, multiplying arrays using the ".".
+        \item If I type "help plot" the internal documentation of plot and it gives me the function and examples. I tried "help function" and was given a description of the built in "function" and also examples. 
+    \end{enumerate}
+    \item I found attending class and reading beforehand useful, I was surprised since other courses do not take into consideration that attending class can be beneficial insight for success. You should give us optional homework problems that do not count for our grade. 
+\end{enumerate}
+\begin{enumerate}
+    \item mysum function
+    \begin{lstlisting}
+    function [sum] = mysum(n)
+    sum = 0;
+    for i = 1:n
+        sum = sum + i;
+    end
+    disp(sum)
+    \end{lstlisting}
+    \item myabsolutevalue function
+    \begin{lstlisting}
+    function [val] = myabsolutevalue(a)
+
+    if a < 0
+        a = (-1)*(a);
+    end
+    disp(a)
+    \end{lstlisting}
+    \item using fprintf() function
+    \begin{lstlisting}
+    function [val] = myabsolutevalue(a)
+    if a < 0
+        a = (-1)*(a);
+    end
+    fprintf("%d\n",a)
+    \end{lstlisting}
+    \item vectornorm function
+    \begin{lstlisting}
+    function norm = vectornorm(x)
+    n = length(x);
+    sum = 0;
+    for s = 1:n
+        sum = sum + x(s)^2;
+    end
+    norm = sqrt(sum);
+    \end{lstlisting}
+    \item plot sine and cosine. 
+    \begin{lstlisting}
+    h = .0001;
+    x = [-4:h:4];
+    y = [-2,2]
+    plot(x,sin(x),'-b','linewidth',2);
+    hold on;
+    plot(x,cos(x),'-r','linewidth',2);
+    ylim(y)
+    xlabel('x');ylabel('y');
+    legend('sin(x)','cos(x)')
+    \end{lstlisting}
+    \begin{figure}[h!]
+\centering
+\includegraphics[scale=.3]{figure1.PNG}
+\caption{Fig1: Plot Sine Cosine}
+\label{fig:plotSC}
+\end{figure}
+    \item Plot $y = arctan(x)$ in MatLab. 
+    \begin{lstlisting}
+    h = .0001;
+    x = [-6:h:6];
+    y = [-2,2];
+    plot(x,atan(x), '-b',linewidth',2);
+    hold on;
+    ylim(y);
+    hline = refline([0,1.5]);
+    hline2 = refline([0,-1.5]);
+    hline.Color = 'r';hline2.Color = 'r';
+    xlabel('x');ylabel('y = arctan(x)');
+    \end{lstlisting}
+    \begin{figure}[h!]
+\centering
+\includegraphics[scale=.4]{fig2.PNG}
+\caption{Fig1: Plot Arctan}
+\label{fig:plotSC}
+\end{figure}
+\item Plotting given data
+\begin{enumerate}
+    \item Plotting data
+    \begin{lstlisting}
+    x = [1:.2:2];
+    y = [1.0139,.7959,.6249,.4906,.3851,.3023];
+    plot(x,y);
+    \end{lstlisting}
+    \item semilogx, semilogy, loglog.\\
+    \begin{lstlisting}
+    semilogx(x,y);
+    semilogy(x,y);
+    loglog(x,y);
+    \end{lstlisting}
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

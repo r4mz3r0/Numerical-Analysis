@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{listings}
+
+% document size parameters
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{8.4in}
+\setlength{\textwidth}{6.5in}
+\setlength{\voffset}{-0.40in}
+\setlength{\headsep}{26pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% header information
+\pagestyle{fancyplain}
+\lhead{\large{{\bf  Numerical Analysis} }}
+\rhead{\large{{\bf Solutions}}}
+\title{Practice Midterm III}
+\author{Ramiro Gonzalez }
+\date{}
+\begin{document}
+\maketitle
+\begin{eumerate}
+    \item (20pts, 4 each) Consider the Initial Value Problem (IVP)
+    $$y'(t) = -20y, y(0) = 5, t \in [0,2]$$
+    \begin{enumerate}
+        \item What do you need to ensure well-posedness of the IVP?
+        \color{red}\\
+        In order to insure this IVP is well-posed a unique solution $y(t)$ exists. If the Lipschitz condition is met, that is there is a Lipschitz constant and the function is continuous on a a domain D. $D = \{(t,y)|a \leq t \leq b \text{ and} -\infty \leq y \leq \infty \}$
+        \color{black}
+        \item Find a Lipschitz constant, L, for this IVP. 
+        \color{red}\\
+        Let $f(t,y) = -20y$, Now using the Lipschitz formula
+        $$\Big|\frac{f(t,y_2) - f(t,y_1)}{y_2 - y_1} \Big| \leq \Big| \frac{\partial}{\partial y} (-20y)\Big|$$
+        $$\Big|\frac{f(t,y_2) - f(t,y_1)}{y_2 - y_1} \Big| \leq 20$$
+        $$|f(t,y_2) - f(t,y_1)| \leq 20|y_2 - y_1|$$
+        We have found L to be 20. 
+        \color{black}
+        %1 e
+        \item Solve this IVP.
+        \color{red}
+        $$\frac{dy}{dt} = -20y$$
+        Seperable differential equation. 
+        $$\frac{dy}{y} = -20dt$$
+        $$y(t) = e^{-20t}C$$
+        $$y(0) = 5 = e^{-20(0)}C$$
+        $$y = 5e^{-20t}$$
+        \color{black}
+        \item Is the equation stiff? Justify (no more than two lines) your answer. 
+        \color{red}\color{red}
+        \\
+        The solution of the IVP is of exponential decay.\\ The derivatives have greater magnitude. 
+        \color{black}
+        \color{black}
+        \item Given a general N and $\Delta t = \frac{2}{N}$, write Euler's method to approximate this IVP. 
+        \color{red}\\
+        Consider the following 
+        $$y'(t) = -20y, y(0) = 5, t \in [0,2]$$
+        $$a = 0, b = 2, \alpha = 5, f(t,y) = -20y$$
+        $$t = 0; w_{0} = 5$$
+        $$w_{i} = w_{i - 1} + \frac{2}{N}f(t_{i-1}, w_{i - 1})$$
+        $$w_{1} = 5 + \frac{2}{N}f(0,5)$$
+        $$t = 0 + i\cdot\frac{2}{N}$$
+        \color{black}
+        
+    \end{enumerate}
+    \item(20pt, 4each)
+    \begin{enumerate}
+        \item Give the local truncation error $\tau_j (\Delta t)$ for fourth order Runge-Kutta method.
+        \color{red}\\ The local truncation error is O($h^4$)\color{black}
+        \item Define the stability of a numerical method.
+        \color{red}\\
+        The solution should not behave erratically, that is, it is does not grow without bound, it should remain bounded. \\ "small changes or perturbations in the initial conditions produce.correspondingly small changes in the subsequent approximations." (Page 341 Section 5.10)
+
+        \color{black}
+        \item Define the consistency of a numerical method.
+        \color{red}\\
+        As we increase the number of stepsize N, the error between our approximation our numerical method solution should and exact solution should decrease as N increases. 
+        \color{black}
+        \item Define the convergence of a numerical method.
+        \color{red}
+        Convergence refers to the Numerical Method solution getting close to the actual solution. As the number of meshpoints increases $N \rightarrow \infty$ the approximated solution reaches the actual solution.
+        \color{black}
+        \item Given a general $\Delta t$, give a 3-step explicit method (you can even create one).
+        \color{red}
+        
+        \color{black}
+    \end{enumerate}
+    \item (12 pts, 4 each) Consider the differential equation
+    $$y^{(3)} = e^t + y, y(0) = 5, t \in [0,2]$$
+    \begin{enumerate}
+        \item Rewrite this problem into a system of first-order ODEs.
+        \color{red}
+        $$u_1(t) = y(t), u_1'(t) = u_2(t)$$
+        $$u_2(t) = y'(t), u_2'(t) = u_3(t)$$
+        $$u_3(t) = y''(t), u_3'(t) = e^{t} + u_1$$
+        Done
+        \color{black}
+        \item Given a general N and $\Delta t = \frac{2}{N}$, write eulers Method to Approximate the obtained system. 
+        \color{red}
+        $$w_{j + 1} = w_{j} + \Delta t f(t_j, w_j)$$
+        $$w_0 = 5, h = \frac{b - a}{N} = \frac{2}{N}$$
+        \color{black}
+        \item Given a general N and $\Delta t = \frac{2}{N}$, write the second order Taylor’s method to approximate the obtained system.
+    \end{enumerate}
+    \item (28 pts, 4 each) Identify all the following numerical methods:
+    \begin{enumerate}
+        \item 
+        Euler’s method (a) 
+        \color{red}
+        $$w_{j + 1} = w_{j} + \Delta tf(t_{i},w_{j})$$
+        \color{black}
+        \item 2-step Adams-Moulton method (g) \color{red}
+        $$w_{j + 1} = w_{j} + (5f(t_{j + 1}, w_{j + 1}) + 8f(t_{j}, w_{j}) - f(t_{j - 1}, w_{j - 1}))$$ \color{black}
+        \item second order Taylor’s method (f)
+        \color{red} $$w_{j + 1} = w_{j} + \frac{\Delta t}{2}\Big(f(t_{j},w_{j}) + \frac{\Delta t}{2}f'(t_{j},w_{j})\Big)$$ \color{black}
+        \item fourth Runge-Kutta method (d)
+        \color{red}
+        $$w_{j + 1} = w_{j} + \frac{\Delta t}{6}\Big( k_1 + 2k_2 + 2k_3 + k_4\Big)$$
+        $$k_1 = f(t_j, w_j)$$
+        $$k_2 = f(t_j + \frac{\Delta t}{2}, w_j + \frac{\Delta t}{2}k_1)$$
+        $$k_3 = f(t_j + \frac{\Delta t}{2}, w_j + \frac{\Delta t}{2}k_2)$$
+        $$k_4 = f(t_{j + 1} , w_j + \Delta tk_3)$$
+        \color{black}
+        \item Modified Euler’s method (b)
+        \color{red}
+        $$w_{j + 1} = w_{j} + \frac{\Delta t}{2}\Big(f(t_{j}, w_{j}) + f(t_{j + 1}, w_{j} + \Delta t f(t_{j}, w_{j}))\Big)$$
+        \color{black}
+        
+        \item second Runge-Kutta method (c)
+        \color{red}
+        $$w_{j + 1} = w_{j} + \Delta t f\Big(t_{j} + \frac{\Delta t}{2}, w_{j} + \frac{\Delta t}{2}f(t_{j}, w_{j}) \Big)$$
+        \color{black}
+        \item 2-step Adams-Bashforth method (e)
+        \color{red}
+        $$w_{j + 1} = w_{j} + \frac{\Delta t}{2}\Big(3f(t_j,w_j) - f(t_{j - 1}, w_{j -1})\Big_)$$
+        \color{black}
+    \end{enumerate}
+    \item (20 pts, 4 each) Place the following numerical methods in the table below (several can belong to the same
+category).
+\Large
+\color{red}
+\begin{center}
+    \begin{tabular}{c|c|c}
+         & 1 step & Multi Step\\
+        \hline
+        Explicit Method &  Euler, Taylor, Runge Kutta  & (Adams Bashforth), Adams Moulton\\
+        Implicit Method &  Euler  & N/A\\
+    \end{tabular}
+\end{center}
+\color{black}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+\end{eumerate}
+\end{document}

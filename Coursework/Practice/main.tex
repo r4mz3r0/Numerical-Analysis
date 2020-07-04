@@ -1,0 +1,257 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{listings}
+% document size parameters
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{8.4in}
+\setlength{\textwidth}{6.5in}
+\setlength{\voffset}{-0.40in}
+\setlength{\headsep}{26pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% header information
+\pagestyle{fancyplain}
+\lhead{\large{{\bf  Numerical Analysis} }}
+\rhead{\large{{\bf }}}
+\title{Chapter 1: Mathematical Preliminaries Exercises}
+\author{Ramiro Gonzalez }
+\date{}
+\begin{document}
+\maketitle
+\section{Exercise Set 1.1}
+\begin{enumerate}
+    \item Show that the following equations have at least one solution in the given intervals.
+    \begin{enumerate}
+        \item $xcos(x)-2x^2+3x-1 = 0, [0.2,0.3]$ and $[1.2,1.3]$\\
+        \begin{enumerate}
+            \item $[0.2,0.3]$ Let $f(x) = xcos(x) - 2x^2 + 3x - 1$ we know that it is continuous, for the interval $[0.2,0.3]$ \\
+                $f(0.2) = .2cos(.2)-2(.2)^2+3.2-1 = -0.2840 < 0 $ and $f(.3) = .3cos(.3)-2(.3)^2+3.3-1 = 0.0066 > 0  $\\
+                By the intermediate value theorem we know that a number c such that $.2 < c < .3$ exists. There is at least one solution c such $(c)cos(c)-2c^2 + 3c - 1 = 0$. 
+            \item  f(x) is continuous on the interval $[1.2,1.3]$, we find $f(1.2) = 0.1548 > 0 $ and $f(1.3) = -0.1323 < 0 $ this means $f(1.2) > f(1.3)$. From the intermediate value theorem we know that there exist an c such that $1.2 < c < 1.3$ for $f(c) = 0$, so there is at least one solution in the interval $[1.2,1.3]$
+        \end{enumerate}
+        \item $(x-2)^2-ln(x)=0, [1,2]$ and $[e,4]$
+        \begin{enumerate}
+            \item Let $f(x) = (x-2)^2-ln(x) = 0$ we want to show that there exists at least one solution in the interval $[1,2]$. $f(1) = 1 > 0, f(2) = -ln(2) <0$ that is $f(1) > f(2)$. F(x) is continuous, By the intermediate value theorem there exist a c such that $1 < c < 2$ for $f(c) = 0$.
+            \item $f(x)$ is continuous in the interval $[e,4]$ and $f(e) = (e-2)^2-ln(e) = -0.4841 < 0, f(4) = (4-2)^2-ln(4) = 2.6137 > 0, f(e) < f(4)$ By the intermediate value theorem there exist c such that $e < c < 4$.
+        \end{enumerate}
+        \item $2xcos(2x)-(x-2)^2=0, [2,3]$ and $[3,4]$
+        \begin{enumerate}
+            \item Let $f(x) = 2xcos(2x)-(x-2)^2=0$, $f(x)$ is continuous, $f(2)= 4cos(4) = -2.6146 < 0, f(3) = 6cos(6)-(1) = 4.7610 > 0 $ If $f\in C[a,b]$ and K is any number between $f(a)$ and $f(b)$ then there exist a number c in $(a,b)$ for which $f(c) = K$. 
+            Since $f(x)$ is continuous and $f(2) < f(3)$, where $f(x) = 0$ then there exist at least one solution c such that $f(c) = 0$
+            \item We know that $f(x)$ is continuous, $f(3) =4.7610 > 0, f(4) = -5.1640 < 0 $ therefore $f(3) > f(4)$ where $f(c) = K = 0$ so there exist (by the intermediate value theorem) a number c $3 < c < 4$ for $f(c) = 0$.
+        \end{enumerate}
+        \item $x-ln(x)^x = 0, [4,5]$ 
+        \begin{enumerate}
+            \item Let $f(x) = x - ln(x)^x $, $f(x)$ is continuous,$f(4) = 4 - ln(4)^4 = 0.3066 > 0, f(5) = -5.7987 < 0 $, $f(4) > f(5)$ it is decreasing. By the intermediate value theorem there exist a number c such that $4 < c < 5$ for $f(c) = 0$.
+        \end{enumerate}
+    \end{enumerate}
+    \item Show that the following equations have at least one solution in the given interval.
+    \begin{enumerate}
+        \item $f(x) = \sqrt{x}-cos(x) = 0, [0,1]$\\
+        $f(x)$ is continuous on the interval $[0,1]$, $f(0)=-1 < 0, f(1) = 1 - cos(1) = 0.4597 > 0$, therefore $f(0) < f(1) $by the intermediate theorem we know there exist a number c such that $0 < c < 1$ for $f(c) = 0$.
+        \item $f(x) e^{x} - x^2 + 3x - 2 = 0, [0,1]$ we know that $f(x) \in C[0,1]$  and $f(0) = -1 < 0, f(1) = e > 0, f(0) < f(1) $ By the intermediate value theorem there exists a number c such that $0 < c < 1$ such that $f(c) = 0$
+        \item $f(x) = -3tan(2x)+x=0, [0,1]$, $f(x)$ is continuous, $f(0) = 0, f(1) = -3.6722, f(1) < f(0)$ since the inteval $[0,1]$ is closed, there exist a number c such that $0 < c < 1$ where that c = 0, for $f(c) = 0$
+        \item $f(x) = ln(x) - x^2 + \frac{5}{2}x - 1 = 0, [\frac{1}{2},1]$ f(x) is continuous in the given interval $f(1/2) = ln(\frac{1}{2}) - (\frac{1}{2})^2 = -0.6931 < 0, f(1) =  0.5000 > 0, f(1/2) < f(1)$ By the intermediate value theorem we know that there exist a numbe c such that $\frac{1}{2} < c < 1$ exist for $f(c) = 0$
+    \end{enumerate}
+    \item Find intervals containing solutions to the following equations. 
+    \begin{enumerate}
+        \item $f(x) = x - 2^{-x} = 0$ f(x) is continuous. From the intermediate value theorem we know $f(0) = -1 < 0, f(1) = \frac{1}{2}$ so the value c exists between $[0,1]$.
+        \item $2xcos(2x) - (x+1)^2 = 0$, $f(-1) = .83$, and $f(0) = -1$, f(x) is continuous, and a number c exist in the interval $[-1,0]$
+        \item $f(x) = 3x-e^{x} = 0$ we know that f(x) is continuous everywhere $f(0) = -1 < 0, f(1) = 0.2817 > 0$ in interval $[0,1]$ there exist a number c such that $f(c) = 0$.
+        \item $f(x) = x + 1 - 2sin(\pi x) = 0$ $f(\frac{-3}{2}) = \frac{-5}{2}, f(\frac{-1}{2} = \frac{5}{2}$ therefore there exists (by the intermediate value theorem) a number c where $\frac{-3}{2} < c < \frac{-1}{2}$ for which $f(c) = 0$
+    \end{enumerate}
+    \item Find intervals containing solutions to the following equations.
+    \begin{enumerate}
+        \item $f(x) = x-3^{-x} = 0$, $f(0) = -3 < 0, f(1) = 1 - 3^{-1} = 0.6667 > 0, f(0) < f(1)$, By the intermediate value theorem there exists a number c such $0 < c < 1$, for $f(c) = 0$.
+        \item $f(x) = 4x^2-e^{x} = 0$, $f(0) = -1 < 0, f(1) = 4-e > 0$ therefore $f(0) < f(1)$ BY the intermediate value theorem there exist a number c such that $0 < c < 1$ for $f(c) = 0$.
+        \item $f(x) = x^3-2x^2-4x+2 = 0$, $f(0) = 2 > 0, f(1) = -3 < 0$ therefor $f(0) < f(1)$ By the intermediate value theorem there exist a number c such that $0 < c < 1$ for $f(c) = 0$.
+        \item $f(x) = x^3+4.001x^2 + 4.002x + 1.101 = 0$, $f(-3) = -1.8960 < 0, f(-2) = 1.1010, f(-3) < f(-2) $ By the intermediate value theorem we know that $f \in C[-3,-2]$ and there exist a number c such that $-3 < c < -2$ for $f(c) = 0$
+    \end{enumerate}
+    \item Find $max_{a \leq x \leq b}|f(x)|$ for the following functions and intervals.
+    \begin{enumerate}
+        \item $f(x) = \frac{(2-e^{x}+2x)}{3}, [0,1]$, $f'(x) = \frac{-e^{x} + 2}{3}, f'(x) = 0, x = ln(2) $ $f(x)$ us continuous everywhere, critical values, $\{0,ln(2),1\}$
+        $$f(0) = \frac{1}{3} = 0.3333, f(ln(2)) = \frac{(2)(ln(2))}{3} = 0.4621, f(1) = \frac{4-e}{3} = 0.4272$$
+        $max_{0 \leq x \leq 1}|\frac{(2-e^{x}+2x)}{3}| \approx .4621,$ where x = ln(2)
+        \item $f(x) = \frac{4x-3}{x^2-2x}, [0.5,1]$ First we must determine if $f(x)$ is continuous on interval given. $4x-3$ is continuous everywhere, $x^2-2x = 0, x = 0, x = 2$ outside of the interval given. $f'(x) = \frac{(x^2-2x)(4)-(4x-3)(2x-2)}{(x^2-2x)^2} = 0,  (-2x^2+3x-3) = 0 $, no real solutions, thus we are left with the interval endpoints. 
+        $f(.5) = 1.3333, f(1) = -1$ therefore $max_{.5 \leq x \leq 1}|\frac{4x-3}{x^2-2x}| = 1.3333$ where x = .5.
+       \item $f(x) = 2xcos(2x) - (x-2)^2, [2,4]$, $f(x)$ is continuous everywhere, next we differentiate, $f'(x) = cos(2x) - 4xsin(x)cos(x) - (x-2) =0$, $f'(x) = 0,f(2) = -2.6146, f(4) = -5.1640$ it follows $max_{2 \leq x \leq 4} |f(x)| = 5.1640$ where x = 4
+        \item $f(x) = 1 + e^{-cos(x-1)}, [1,2]$ f(x) is continuous everywhere, $f'(x) = sin(x-1)e^{-cos(x-1)} = 0, x =1, f(1) = 1.3679, f(2) = 1.5826 $ therefore $max_{1 \leq x \leq 2}|1 + exp(-cos(x-1)) \approx 1.5826$
+    \end{enumerate}
+    \item Find $max_{a \leq x \leq b}|f(x)|$ for the following functions and intervals. 
+    \begin{enumerate}
+        \item $f(x) = \frac{2x}{x^2+1}, [0,2]$, we can see that $2x$ is continuous, while $x^2+1$ is not continuous at $x = \pm i$ where $\pm i \not \in [0,2]$. $f'(x) = \frac{(2x^2+2) - (4x^2)}{(x^2+1)^2}, f'(x) = 0,2 - 2x^2 = 0, x = \pm 1, -1 \not \in [0,2]$, $f(0) = 0, f(2) = \frac{4}{5}$ therefore $max_{0 \leq x \leq 2}|f(x = 1)| = 1$
+        \item $f(x) = x^2\sqrt{4 - x},[0,4]$ while $4-x > 0$ $f(x)$ is continuous, $f'(x) = 2x\sqrt{4-x} + x^2(-\frac{1}{2\sqrt{4-x}}) = 0, x = 0,x = \frac{16}{5} = 3.2$, critical values $0,16/5,4$, $f(0) = 0, f(16/5) = 9.16, f(4) = 0$ therefore $max_{0 \leq x \leq 4 }|f(x = 16/5)| = 9.16$.
+        \item $f(x) = x^3 - 4x + 2, [1,2]$, f(x) is continuous everywhere, $f'(x) = 3x^2-4, x = \sqrt{4/3}$, . Therefore $|f(1)| = 1, f(\sqrt{4/3}) = 1.08,f(2) = 2$ this shows $max_{1 \leq x \leq 2} |f(x = 2)| = 2$
+        \item $f(x) = x\sqrt{3-x^2}, [0,1]$, $f(x)$ is continuous on the interval. $f'(x) = \sqrt{3-x^2} + x\frac{-2x}{2\sqrt{3-x^2}} = \frac{3-2x^2}{\sqrt{3-x^2}}, f'(x) = 0$, $x = \pm \sqrt{3} \not \in [0,1]$, $f(0) = 0, f(1) = \sqrt{2}, max_{0 \leq x \leq 1}|f(x = 1)| = \sqrt{2}$
+    \end{enumerate}
+    \item Show that $f'(x)$ is 0 at least once in the given intervals. 
+    \begin{enumerate}
+        \item $f(x) = 1 - e^x + (e-1)sin((\frac{\pi}{2})x), [0,1]$ Taking into consideration rolle's theorem, we must show that $f\in [0,1]$, $f$ i differentiable in $[0,1]$, and if $f(0) = f(1)$, then there exist a number c such that $c \in [0,1]$ for $f'(c) = 0$. $f'(x) = -e^x + (\frac{\pi}{2})(e-1)cos(\frac{\pi}{2}x)$ there are no singularities in $[0,1]$ therefore $f$ is differentiable in that interval, $f(0) = 0, f(1) = 0, f(0) = f(0)$, by rolle's theorem there exist a number c $\in [0,1]$ such that $f'(c) = 0$
+        \item $f(x) = (x-1)tan(x) + xsin(\pi x), [0,1]$, $f'(x) = (x-1)sec^2(x) + tan(x) + x\pi cos(\pi x) + sin(\pi x)$, $f'(x)$ is continuous, no singularities therefore $f(x)$ is differentiable and thus continuous on the interval. $f(0) = 0, f(1) = 0, f(0) = f(1)$ therefore f(x) satisfies Rolle's theorem which means "there exists at least one c in (0,1) such that $f'(c) = 0$.
+        \item $f(x) = (x)sin(\pi x) - (x-2)ln(x), [1,2]$, $f'(x) = sin(\pi x) + x\pi cos(x) -\frac{(x-2) + xln(x)}{x}$, $f'(x)$ has a singularity at x = 0, where $0 \not \in [1,2]$ therefore $f(x)$ is differentiable and continuous on $[1,2]$, $f(1) = 0 , f(2) = 0, f(1) = f(2)$ by rolle's theorem we can conclude there exist a number c such that $c \in (1,2)$ where $f'(c) = 0$.
+        \item $f(x) = (x-2)sin(x)ln(x+2), [-1,3]$, $f'(x) =sin(x)ln(x+2) + (x-2)cos(x)ln(x+2) + (x -2)sinx(1/(x+2))$, singularity at x = -2, no in the interval, f(x) is differentiable and continuous, $f(-1) = 0, f(3) = 1, f(-1) \neq f(3)$ therefore f(x) fails to satisfy the Rolle's Theorem. We can not conclude there is a number $c \in [-1,3], f'(c) = 0$.
+    \end{enumerate}
+    \item Suppose $f\in C[a,b]$ and $f'(x)$ exists on (a,b). Show that if $f'(x) \neq 0$ for all x in (a,b), there there can exist at most one
+    number p in [a,b] with f(p) = 0. .
+    \item Let $f(x) = x^3$
+    \begin{enumerate}
+        \item Find the second Taylor polynomial $P_2(x)$ about $x_0 = 0$.
+        $$P_n(x) = \sum_{k=0}^{n} \frac{f^{k}(x_0)}{k!}(x-x_0)^{k}$$
+        $$f(0) = 0, f^{1} = 3x^2 = 0, f^{2} = 6x = 0$$
+        $$P_2(0) = \frac{f(0)(x-0)^{0}}{0!} + \frac{f^{1}(0)(x-0)^{1}}{1!} + \frac{f^{2}(0)(x-0)^{2}}{2!} = 0$$
+        \item Find $R_2(.5)$ and the actual error in using $P_2(.5)$ to approximate $f(.5)$.\\Recall $x_0 = 0$
+        $$R_n(x) = \frac{f^{n+1}(\rho (x))}{(n+1)!}(x-x_0)^{n+1}$$
+        $$R_2(.5) = \frac{f^{3}(\rho(x))}{(3)!}(x-0)^{3}, f^{3} = 6$$
+        $$R_n(x) = \frac{f^{3}(\rho(x))}{3!}(x-0)^3$$
+        $$R_n(x) = \frac{6(x^3)}{6}$$
+        $$R_2(0.5) = .125$$
+        \item Repeat part (a) using $x_0 = 1$.
+        $$P_n(x) = \sum_{k=0}^{n} \frac{f^{k}(x_0)}{k!}(x-x_0)^{k}$$
+        $$f(1) = 1 , f^{1} = 3, f^{2} = 6$$
+        $$P_2(1) = \frac{f(1)(x-1)^{0}}{0!} + \frac{f^{1}(1)(x-1)^{1}}{1!} + \frac{f^{2}(1)(x-1)^{2}}{2!} = 1 + 3(x-1) + 3(x-1)^2$$
+        \item Repeat part (b) using the polynomial form part (c).
+        $$R_n(x) = \frac{f^{3}(\rho(x))}{3!}(x-1)^3, x_0 = 1$$
+        $$R_n(x) = (x-1)^3$$
+        $$R_2(.5) = (.5-1)^3 = -0.125$$
+        $$f(x) = x^3$$
+        $$f(.5) = .125, f(0.5) - P_2(.5) = -.125$$
+    \end{enumerate}
+    \item Find the third Taylor polynomial $P_3(x)$ for the function $f(x) = \sqrt{x+1}$ about $x_0 = 0$. Approximate $\sqrt{.5}. \sqrt{.75},\sqrt{1.25},\sqrt{1.5}$ using $p_3(x)$ and find the actual errors.
+    $$f(x) = \sqrt{x+1},f'(x) = \frac{1}{2\sqrt{x+1}}, f^{2} =\frac{-1}{4(x+1)^{-3/2}} , f^{3} = \frac{3}{8(x+1)^{-5/2}}$$
+    $$f(0) = 1,f'(0) = \frac{1}{2}, f^{2}(0) =\frac{-1}{4} , f^{3}(0) = \frac{3}{8}$$
+    $$P_3(x) = \frac{(1)(x-0)^{0}}{0!} + \frac{(1/2)(x-0)^1}{1!} + \frac{(-1/4)(x-0)^2}{2!} + \frac{(3/8)(x-0)^3}{3!}$$
+    $$P_3(x) = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{x^3}{16}$$
+    $$P_3(.5) = 1.2265, P_3(.75) = 1.331, P_3(1.25) = 1.5518 , P_3(1.5) = 1.679$$
+    For actual error, $|\sqrt{.5 + 1} - P_3(.5)| = .00018$, 
+    $|\sqrt{.75 + 1} - P_3(.75)| = .0082$, 
+    $|\sqrt{1.25 + 1} - P_3(1.25)| = .052$,
+    $|\sqrt{1.5 + 1} - P_3(1.5)| = .099$
+    \item Find the second Taylor polynomial $P_2(x)$ for the function $f(x) = e^{x}cos(x)$ about $x_0 = 0$.
+    \begin{enumerate}
+        \item Use $P_2(.5)$ to approximate $f(.5)$. Find an upper bound for error $|f(.5) - P_2(.5)|$ using the error formula and compare it to the actual error.  $$P_n(x) = \sum_{k=0}^n\frac{f^{k}(x_0)}{k!}(x-x_0)^k$$
+        $$f(x) = e^{x}cos(x), f^{1}(x) = -e^{x}sin(x) + e^{x}cos(x),f^{2}(x) = -2e^{x}sin(x) $$
+        $$P_2(x) =\frac{f(0)}{0!}(x-0)^0 +  \frac{f^{1}(0)}{1!}(x-0)^1 + \frac{f^{2}(0)}{2!}(x-0)^2$$
+        $$f(0) = 1, f'(0) = 1, f''(0) = 0, P_2(x) = 1 + x$$
+        $$P_2(.5) = 1.5, f(.5) = e^{.5}cos(.5) =1.4469 $$
+        $$|1.4469 - 1.5| = 0.0531$$
+        Next we find $R_2(x = .5)$,$R_n(x) = \frac{f^{n+1}(\xi(x))}{(n+1)!}(x-x_0)^{n+1}$
+        $$R_2(x) = \frac{f^3(\xi(x))}{3!}(x-0)^3$$
+        $$R_2(x) = \frac{-e^{\xi(x)}[cos(\xi(x)) - sin(\xi(x))]}{3}(x)^3$$
+        $$R_2(.5) = \frac{-e^{\xi(.5)}[cos(\xi(.5)) - sin(\xi(.5))]}{3}(.5)^3$$
+        $$|R_2(.5)| \leq max_{\xi(x)\in[0,0.5]}|\frac{-e^{\xi(.5)}[cos(\xi(.5)) - sin(\xi(.5))]}{3}(.5)^3|$$
+        $$|R_2(.5)| \leq \frac{(.5)^3}{3} max_{\xi(x)\in[0,0.5]}|e^{\xi(.5)}[cos(\xi(.5)) - sin(\xi(.5))]|$$
+        $$|f(0.5) - P_2(.5)| \leq ((.5)^3/3)(2.24) \leq .0933333$$
+        The actual error is $= .0531$
+        \item Find a bound for the error $|f(x) - P_2(x)|$ in using $P_2(x)$ to approximate $f(x)$ on the interval $[0,1]$
+        $$R_2(x) = \frac{-e^{\xi(x)}[cos(\xi(x)) - sin(\xi(x))]}{3}(x)^3$$
+        \item Approximate $\int_0^1f(x)dx$ using $\int_0^1 P_2(x)dx$.
+        $$\int_0^1f(x)dx, = \frac{2x + x^2}{2}|_0^1 \approx 1.5$$
+        \item Find an upper bound for the error in (c) using $\int_0^1|R_2(x)dx|$ and compare the bound to the actual error. $.121975486$
+    \end{enumerate}
+    \item Repeat Exercise 11 using $x_0 = \frac{\pi}{6}$
+    \item Find the third Taylor polynomial $P_3(x)$ for the function $f(x) = (x-1)ln(x)$ about $x_0=1$.
+    \begin{enumerate}
+        \item Use $P_3(.5)$ to approximate $f(.5)$. Find an upper bound for error $|f(.5) - P_3(.5)|$ using error formula and compare it to the actual error.$$P_3(x) = (x-1)^-\frac{1}{2}(x-1)^3, P_3(.5) = .3125, f(.5) = .346573,|f(.5)-P_3(.5)|=|R_3(.5)||$$
+    \end{enumerate}
+    \item Let $f(x) = 2xcos(2x) - (x-2)^2, x_0 = 0$
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
+    \item Find the fourth Taylor polynomial $P_4(x)$  for the function $f(x) = xe^{x^2}$ about $x_0 = 0$
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
+    Use the error term of a Taylor polynomial to estimate the error involved in using $sin(x) \approx x$ to approximate $sin(1^o)$
+    \item Use a Taylor polynomial about $\pi/4$ to approximate $cos(42^o)$ to an accuracy of $10^{-6}$.
+    \item Let $f(x) = (1-x)^{-1}$ and $x_0 = 0$. Find the nth Taylor polynomial $P_n(x)$ for $f(x)$ about $x_0$. Find a value of n necessary for $P_n(x)$ to approximate f(x) to within $10^{-6}$ on [0,.5].
+    \item Let $f(x) = e^x$ and $x_0 = 0$. Find the nth Taylor polynomial $P_n(x)$ for $f(x)$ about $x_0$. Find a value of n necessary for $P_n(x)$ to approximate f(x) to within $10^{-6}$ on [0,.5].
+    \item Find the nth Maclaurin polynomial $P_n(x)$ for $f(x) = arctan(x)$.
+    \item The polynomial $P_2(x) = 1 - \frac{1x^2}{2}$ is to be used to approximate $f(x) = cos(x)$ in $[\frac{-1}{2},\frac{1}{2}]$. Find a bound for the maximum error. 
+    \item Use the Intermediate Value Theorem 1.11 and Rolle's Theorem 1.7 to show that the graph of $f(x) = x^3 + 2x + k$ crosses the x-axis exactly once, regardless of the value of the constant k.
+    \item A Maclaurin polynomial for $e^x$ is used to give the approximation 2.5 to e. The error bound in this approximation is established to be $E=\frac{1}{6}$. Find a bound for the error in E.
+    \item The error function defined by
+        $$erf(x) = \frac{2}{\sqrt{\pi}}\int_{k=0}^{x}e^{-t^2}dt$$
+    gives the probabilty that any one of a series of trials will ie within x units of the mean, assuming that the trials have a normal distribution mean 0 and standard deviation $\frac{\sqrt{2}}{2}$. This integral cannot be evaluated in terms of elementary functions, so an approximating technique must be used. 
+    \begin{enumerate}
+        \item Integrate the Maclaurin series for $e^{-x^2}$ to show that
+        $$erf(x) = \frac{2}{\sqrt{\pi}}\sum_{k=0}^{\infty}\frac{2^{k}x^{2k+1}}{(2k+1)k!}$$
+        \item The error function can also be expressed in the form
+        $$erf(x) = \frac{2}{\sqrt{\pi}}\sum_{k=0}^{\infty}\frac{2^{k}x^{2k+1}}{1\cdot3\cdot5\cdot\cdot(2k+1)}$$
+        Verify that the two series agree for $k = 1,2,3, 4$. [hint: Use the Maclaurin series for $e^{-x^2}$].
+        \item Use the series in part (a) to approximate $erf(1)$ to within $10^{-7}$.
+        \item Use the same number of terms as in part (c) to approximate erf(1) with the series in part (b).
+        \item Explain why the difficulties occur using the series in part(b) to approximate erf(x).
+    \end{enumerate}
+\end{enumerate}
+\section{Exercise Set 1.2}
+\begin{enumerate}
+    \item Compute the absolute error and relative error in approximations of p by p*.
+    \begin{enumerate}
+        \item $p = \pi, p* = 22/7$
+        Actual Error $p = p*$, absolute error $|p - p*|$, and relative error is $\frac{|p-p*|}{|p|}$,
+        provided that $p\neq 0$. Absolute Error: $|\pi - 22/7| = 0.0013 $
+        Relative Error: $\frac{|\pi - 22/7|}{|\pi|} = .00040250$
+        \item $p = \pi, p* = 3.1416$
+        Absolute: $|\pi - 3.1416| =.0000073464$\\
+        Relative: $\frac{|\pi - 3.1416|}{|p|} =\frac{.0000073464}{\pi} = 2.3384e-06$
+        \item $p = e, p* = 2.718$\\
+        Absolute: $|e - 2.718| =0.4236 $\\
+        Relative: $\frac{|e-2.718|}{e} =1.0368e-04 $\\
+        \item $p = \sqrt{2}, p*=1.414$\\
+        Absolute: $|\sqrt{2}-1.414| =  2.1356e-04 $\\
+        Relative: $\frac{|\sqrt{2}-1.414|}{\sqrt{2}} =1.0368e-04$
+    \end{enumerate}
+    \item Compute the absolute error and relative error in approximations of p by p*.
+    \begin{enumerate}
+        \item Absolute: $|e^{10} - 22000| = 26.4658$\\
+        Relative: $\frac{|e^{10} - 22000|}{e^{10}} = 0.0012$
+        \item Absolute: $|10^{\pi} - 1400| = 14.5443 $\\
+        Relative: $|10^{\pi} - 1400|/|10^{\pi}| = 0.0105$
+        \item $p = 40320, p* = 39900$\\
+        Absolute: $|40320-39900| = 420$\\
+        Relative: $|40320-39900|/|40320| = 0.0104$
+        \item $p = 9!, p* = \sqrt{18\pi}(9/e)^{9}$\\
+        Absolute: $|362880-\sqrt{18\pi}(9/e)^{9}| =3.3431e+03 $\\
+         Relative: $|362880-\sqrt{18\pi}(9/e)^{9}|/|362880| = 0.0092$
+    \end{enumerate}
+    \item Suppose p* must approximate p with relative error at most $10^{-3}$. Find the largest interval in which p* must lie for each value of p. 
+    \begin{enumerate}
+        \item 150
+        $$\frac{|150 - p*|}{|150|} = 10^{-3}$$
+        $$|150 - p*| = 10^{-3}(150)$$
+         $$-150(10^(-3)) < (150 - p*) < 10^{-3}(150)$$
+         $$150(10^(-3)) + 150 < p* < -10^{-3}(150) + 150$$
+         $$150((10^(-3)) + 1)< p* < 150(-10^{-3} + 1)$$
+        \item 900
+        $$\frac{|900 - p*|}{|900|} = 10^{-3}$$
+        $$-900(10^(-3)) < (900 - p*) < 10^{-3}(900)$$
+        $$900(10^(-3)) + 900 < p* < -10^{-3}(900) + 900$$
+        \item 1500
+        $$\frac{|1500 - p*|}{|1500|} = 10^{-3}$$
+        $$-1500(10^(-3)) < (1500 - p*) < 10^{-3}(1500)$$
+        $$1500(10^(-3)) + 1500 < p* < -10^{-3}(1500) + 1500$$
+        \item 90
+        $$\frac{|90 - p*|}{|90|} = 10^{-3}$$
+        $$-90(10^(-3)) < (90 - p*) < 10^{-3}(90)$$
+        $$90(10^(-3)) + 90 < p* < -10^{-3}(90) + 90$$
+    \end{enumerate}
+    \item Suppose p* must approximate p with relative error at most $10^{-3}$. Find the largest interval in which p* must lie for each value of p.
+\end{enumerate}
+\section{1.3}
+\section{1.4}
+
+
+
+\end{document}
