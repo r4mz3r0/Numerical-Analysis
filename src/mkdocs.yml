@@ -1,6 +1,13 @@
 site_name: Numerical Analysis
 
+extra_javascript: 
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - mdx_math
+
 nav:
     - Examinations: index.md
     - Misc: misc.md
     - About: about.md
+    - MATLAB: matlab.md
