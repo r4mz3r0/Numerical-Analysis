@@ -1,5 +1,5 @@
 # Numerical-Analysis
-For TAship considerations
+Coursework
 
 # MATH-131 University of California, Merced
 Numerical Methods for Scientist and Engineers - Spring 2018
